@@ -1,0 +1,26 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-darkFeather: #101d25;
+  --color-freinachtBlack: #232d36;
+  --color-poolGreen: #00b09c;
+  --color-greyChateau: #9fa2a7;
+  --color-malachite: #0bd953;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: theme('colors.darkFeather');
+}
+
+::-webkit-scrollbar-thumb {
+  background: theme('colors.freinachtBlack');
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: theme('colors.freinachtBlack');
+}

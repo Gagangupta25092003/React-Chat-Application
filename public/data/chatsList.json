@@ -1,0 +1,354 @@
+[
+  {
+    "name": "Alice Johnson",
+    "lastMsg": "Perfect. I really appreciate the thoroughness. Looking forward to your feedback on the document I shared.",
+    "id": 1,
+    "profileImg": "https://randomuser.me/api/portraits/women/1.jpg",
+    "messages": [
+      {
+        "created": "2025-09-20T09:15:00Z",
+        "value": "Hey Alice, are we still on for our meeting later today? I want to go over the project timeline and the pending tasks for the team before the client call.",
+        "recieved": true,
+        "id": "1"
+      },
+      {
+        "created": "2025-09-20T09:16:30Z",
+        "value": "Yes, same time as usual. I’ve also prepared a draft presentation with all the updates, so we can finalize it before sending it to the client.",
+        "recieved": false,
+        "id": "2"
+      },
+      {
+        "created": "2025-09-20T09:18:00Z",
+        "value": "Perfect! I’ll review your draft once you share it. Make sure to highlight the new feature implementations and the testing results.",
+        "recieved": true,
+        "id": "3"
+      },
+      {
+        "created": "2025-09-20T09:20:00Z",
+        "value": "Will do. Also, I added a section for risk analysis and mitigation strategies; this should help the client understand our approach better.",
+        "recieved": false,
+        "id": "4"
+      },
+      {
+        "created": "2025-09-20T09:25:00Z",
+        "value": "That’s great. Did you also include the projected timelines for each module? The client asked for detailed estimates in the last meeting.",
+        "recieved": true,
+        "id": "5"
+      },
+      {
+        "created": "2025-09-20T09:30:00Z",
+        "value": "Yes, I’ve included the timelines in a separate slide along with dependencies and potential blockers. I also noted where we might need extra resources if anything slips.",
+        "recieved": false,
+        "id": "6"
+      },
+      {
+        "created": "2025-09-20T09:35:00Z",
+        "value": "Excellent. Once you share it, I’ll add my notes and we can send it over for review by the afternoon.",
+        "recieved": true,
+        "id": "7"
+      },
+      {
+        "created": "2025-09-20T09:40:00Z",
+        "value": "Sounds good. By the way, I updated the test coverage section to include the new edge cases we discussed last week.",
+        "recieved": false,
+        "id": "8"
+      },
+      {
+        "created": "2025-09-20T09:45:00Z",
+        "value": "Awesome. That should make the report more comprehensive. Let’s also make sure we summarize all feedback from the QA team to avoid confusion.",
+        "recieved": true,
+        "id": "9"
+      },
+      {
+        "created": "2025-09-20T09:50:00Z",
+        "value": "Absolutely. I’ll integrate all feedback and then send you the final version. This should give us a clean deck for tomorrow’s presentation.",
+        "recieved": false,
+        "id": "10"
+      },
+      {
+        "created": "2025-09-20T09:55:00Z",
+        "value": "Perfect. I really appreciate the thoroughness. Looking forward to your feedback on the document I shared.",
+        "recieved": true,
+        "id": "11"
+      }
+    ]
+  },
+  {
+    "name": "David Miller",
+    "lastMsg": "Yes, the migration plan looks good. Let's get it reviewed by the security team before rollout.",
+    "id": 2,
+    "profileImg": "https://randomuser.me/api/portraits/men/2.jpg",
+    "messages": [
+      {
+        "created": "2025-09-19T10:10:00Z",
+        "value": "Morning David, did you get a chance to look at the migration plan? I want to finalize the timeline this week.",
+        "recieved": true,
+        "id": "1"
+      },
+      {
+        "created": "2025-09-19T10:12:30Z",
+        "value": "Yes, I reviewed most of it yesterday. The only thing missing is a clear rollback strategy in case something goes wrong during migration.",
+        "recieved": false,
+        "id": "2"
+      },
+      {
+        "created": "2025-09-19T10:15:00Z",
+        "value": "Good point. I’ll add a rollback plan with checkpoints after each migration step. That way, we can revert easily if needed.",
+        "recieved": true,
+        "id": "3"
+      },
+      {
+        "created": "2025-09-19T10:20:00Z",
+        "value": "Exactly. Also, can you confirm whether the new system is compliant with the latest security standards? We can’t afford any gaps.",
+        "recieved": false,
+        "id": "4"
+      },
+      {
+        "created": "2025-09-19T10:25:00Z",
+        "value": "Yes, I double-checked with the IT security team. The system is ISO-compliant, and we’re also enabling encryption for all data transfers.",
+        "recieved": true,
+        "id": "5"
+      },
+      {
+        "created": "2025-09-19T10:30:00Z",
+        "value": "That’s reassuring. What about user access roles? Are we carrying over the existing ones or restructuring them?",
+        "recieved": false,
+        "id": "6"
+      },
+      {
+        "created": "2025-09-19T10:35:00Z",
+        "value": "We’ll restructure them slightly to align with the new hierarchy. This should actually simplify permissions and reduce conflicts.",
+        "recieved": true,
+        "id": "7"
+      },
+      {
+        "created": "2025-09-19T10:40:00Z",
+        "value": "Makes sense. I’ll draft an updated diagram for the access structure and send it to you by EOD.",
+        "recieved": false,
+        "id": "8"
+      },
+      {
+        "created": "2025-09-19T10:45:00Z",
+        "value": "Great. Let’s also make sure the documentation is crystal clear so onboarding is smoother for new hires.",
+        "recieved": true,
+        "id": "9"
+      },
+      {
+        "created": "2025-09-19T10:50:00Z",
+        "value": "Will do. I’ll also prepare a FAQ sheet for the most common issues we might face post-migration.",
+        "recieved": false,
+        "id": "10"
+      },
+      {
+        "created": "2025-09-19T10:55:00Z",
+        "value": "Yes, the migration plan looks good. Let's get it reviewed by the security team before rollout.",
+        "recieved": true,
+        "id": "11"
+      }
+    ]
+  },
+  {
+    "name": "Sophia Lee",
+    "lastMsg": "Perfect, I’ll finalize the budget spreadsheet and share it by tomorrow.",
+    "id": 3,
+    "profileImg": "https://randomuser.me/api/portraits/women/3.jpg",
+    "messages": [
+      {
+        "created": "2025-09-18T08:00:00Z",
+        "value": "Hi Sophia, have you had a chance to update the financial forecasts for Q4? The board is asking for revised numbers.",
+        "recieved": true,
+        "id": "1"
+      },
+      {
+        "created": "2025-09-18T08:05:00Z",
+        "value": "Yes, I’m working on them. The revenue projections are slightly lower due to market shifts, but we’re still on track overall.",
+        "recieved": false,
+        "id": "2"
+      },
+      {
+        "created": "2025-09-18T08:10:00Z",
+        "value": "Understood. Can you add a slide highlighting the market conditions? It’ll help justify the adjustments when we present.",
+        "recieved": true,
+        "id": "3"
+      },
+      {
+        "created": "2025-09-18T08:15:00Z",
+        "value": "Of course. I’ll include competitor analysis and external factors influencing demand this quarter.",
+        "recieved": false,
+        "id": "4"
+      },
+      {
+        "created": "2025-09-18T08:20:00Z",
+        "value": "Great. Also, don’t forget to include cash flow projections. The CFO wants to ensure liquidity remains strong.",
+        "recieved": true,
+        "id": "5"
+      },
+      {
+        "created": "2025-09-18T08:25:00Z",
+        "value": "Got it. I’ll run those numbers and send you a preliminary report today itself.",
+        "recieved": false,
+        "id": "6"
+      },
+      {
+        "created": "2025-09-18T08:30:00Z",
+        "value": "Thanks. I’ll review and add notes before we send the final version.",
+        "recieved": true,
+        "id": "7"
+      },
+      {
+        "created": "2025-09-18T08:35:00Z",
+        "value": "Also, should I prepare alternate scenarios in case sales dip further in Q4?",
+        "recieved": false,
+        "id": "8"
+      },
+      {
+        "created": "2025-09-18T08:40:00Z",
+        "value": "Yes, please. Scenario planning will give us a stronger position with the board.",
+        "recieved": true,
+        "id": "9"
+      },
+      {
+        "created": "2025-09-18T08:45:00Z",
+        "value": "Perfect, I’ll finalize the budget spreadsheet and share it by tomorrow.",
+        "recieved": false,
+        "id": "10"
+      }
+    ]
+  },
+  {
+    "name": "Michael Brown",
+    "lastMsg": "Great. I’ll share the updated designs later tonight so you can review before tomorrow’s workshop.",
+    "id": 4,
+    "profileImg": "https://randomuser.me/api/portraits/men/4.jpg",
+    "messages": [
+      {
+        "created": "2025-09-17T14:00:00Z",
+        "value": "Michael, are we aligning with the new design guidelines for the upcoming app release?",
+        "recieved": true,
+        "id": "1"
+      },
+      {
+        "created": "2025-09-17T14:05:00Z",
+        "value": "Yes, I’ve started applying them in the latest mockups. The typography and spacing have been adjusted as per the brand book.",
+        "recieved": false,
+        "id": "2"
+      },
+      {
+        "created": "2025-09-17T14:10:00Z",
+        "value": "Nice. Did you also check accessibility? We should aim for AA compliance at least.",
+        "recieved": true,
+        "id": "3"
+      },
+      {
+        "created": "2025-09-17T14:15:00Z",
+        "value": "Yes, I tested with screen readers and color contrast tools. All major issues are fixed now.",
+        "recieved": false,
+        "id": "4"
+      },
+      {
+        "created": "2025-09-17T14:20:00Z",
+        "value": "Perfect. Can you also share a style guide document? That’ll help developers stay consistent.",
+        "recieved": true,
+        "id": "5"
+      },
+      {
+        "created": "2025-09-17T14:25:00Z",
+        "value": "Absolutely. I’m drafting one and will include typography, colors, spacing, and components usage.",
+        "recieved": false,
+        "id": "6"
+      },
+      {
+        "created": "2025-09-17T14:30:00Z",
+        "value": "Good. Let’s also have a short workshop with the dev team this week so everyone is on the same page.",
+        "recieved": true,
+        "id": "7"
+      },
+      {
+        "created": "2025-09-17T14:35:00Z",
+        "value": "Agreed. I’ll set it up for Friday afternoon. Will share invite.",
+        "recieved": false,
+        "id": "8"
+      },
+      {
+        "created": "2025-09-17T14:40:00Z",
+        "value": "Thanks. Make sure to include QA team too since they’ll need context for testing UI changes.",
+        "recieved": true,
+        "id": "9"
+      },
+      {
+        "created": "2025-09-17T14:45:00Z",
+        "value": "Great. I’ll share the updated designs later tonight so you can review before tomorrow’s workshop.",
+        "recieved": false,
+        "id": "10"
+      }
+    ]
+  },
+  {
+    "name": "Emma Davis",
+    "lastMsg": "Yes, please block 2 hours so we can go over every module carefully.",
+    "id": 5,
+    "profileImg": "https://randomuser.me/api/portraits/women/5.jpg",
+    "messages": [
+      {
+        "created": "2025-09-16T11:00:00Z",
+        "value": "Emma, can you confirm the agenda for the training session tomorrow?",
+        "recieved": true,
+        "id": "1"
+      },
+      {
+        "created": "2025-09-16T11:05:00Z",
+        "value": "Yes. We’ll cover onboarding, system walkthrough, and best practices for the first half. The second half will focus on troubleshooting common issues.",
+        "recieved": false,
+        "id": "2"
+      },
+      {
+        "created": "2025-09-16T11:10:00Z",
+        "value": "Sounds comprehensive. Should we also include a short quiz to check understanding?",
+        "recieved": true,
+        "id": "3"
+      },
+      {
+        "created": "2025-09-16T11:15:00Z",
+        "value": "Good idea. I’ll prepare a short interactive quiz with multiple-choice questions. Keeps it engaging.",
+        "recieved": false,
+        "id": "4"
+      },
+      {
+        "created": "2025-09-16T11:20:00Z",
+        "value": "Nice. Can we also record the session for those who can’t attend live?",
+        "recieved": true,
+        "id": "5"
+      },
+      {
+        "created": "2025-09-16T11:25:00Z",
+        "value": "Yes, I’ve already arranged for recording. The link will be shared right after the session.",
+        "recieved": false,
+        "id": "6"
+      },
+      {
+        "created": "2025-09-16T11:30:00Z",
+        "value": "Great. Do you think 3 hours is enough, or should we extend it?",
+        "recieved": true,
+        "id": "7"
+      },
+      {
+        "created": "2025-09-16T11:35:00Z",
+        "value": "We can extend if required. I’ll keep some buffer time just in case participants have additional questions.",
+        "recieved": false,
+        "id": "8"
+      },
+      {
+        "created": "2025-09-16T11:40:00Z",
+        "value": "Perfect. Looking forward to it. Thanks for handling this so smoothly.",
+        "recieved": true,
+        "id": "9"
+      },
+      {
+        "created": "2025-09-16T11:45:00Z",
+        "value": "Yes, please block 2 hours so we can go over every module carefully.",
+        "recieved": false,
+        "id": "10"
+      }
+    ]
+  }
+]

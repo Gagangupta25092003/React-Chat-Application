@@ -1,0 +1,74 @@
+{
+  "name": "Alice Johnson",
+  "lastMsg": "Looking forward to your feedback on the document I shared.",
+  "id": 1,
+  "profileImg": "https://randomuser.me/api/portraits/women/1.jpg",
+  "messages": [
+    {
+      "created": "2025-09-20T09:15:00Z",
+      "value": "Hey Alice, are we still on for our meeting later today? I want to go over the project timeline and the pending tasks for the team before the client call.",
+      "recieved": true,
+      "id": "1"
+    },
+    {
+      "created": "2025-09-20T09:16:30Z",
+      "value": "Yes, same time as usual. I’ve also prepared a draft presentation with all the updates, so we can finalize it before sending it to the client.",
+      "recieved": false,
+      "id": "2"
+    },
+    {
+      "created": "2025-09-20T09:18:00Z",
+      "value": "Perfect! I’ll review your draft once you share it. Make sure to highlight the new feature implementations and the testing results.",
+      "recieved": true,
+      "id": "3"
+    },
+    {
+      "created": "2025-09-20T09:20:00Z",
+      "value": "Will do. Also, I added a section for risk analysis and mitigation strategies; this should help the client understand our approach better.",
+      "recieved": false,
+      "id": "4"
+    },
+    {
+      "created": "2025-09-20T09:25:00Z",
+      "value": "That’s great. Did you also include the projected timelines for each module? The client asked for detailed estimates in the last meeting.",
+      "recieved": true,
+      "id": "5"
+    },
+    {
+      "created": "2025-09-20T09:30:00Z",
+      "value": "Yes, I’ve included the timelines in a separate slide along with dependencies and potential blockers. I also noted where we might need extra resources if anything slips.",
+      "recieved": false,
+      "id": "6"
+    },
+    {
+      "created": "2025-09-20T09:35:00Z",
+      "value": "Excellent. Once you share it, I’ll add my notes and we can send it over for review by the afternoon.",
+      "recieved": true,
+      "id": "7"
+    },
+    {
+      "created": "2025-09-20T09:40:00Z",
+      "value": "Sounds good. By the way, I updated the test coverage section to include the new edge cases we discussed last week.",
+      "recieved": false,
+      "id": "8"
+    },
+    {
+      "created": "2025-09-20T09:45:00Z",
+      "value": "Awesome. That should make the report more comprehensive. Let’s also make sure we summarize all feedback from the QA team to avoid confusion.",
+      "recieved": true,
+      "id": "9"
+    },
+    {
+      "created": "2025-09-20T09:50:00Z",
+      "value": "Absolutely. I’ll integrate all feedback and then send you the final version. This should give us a clean deck for tomorrow’s presentation.",
+      "recieved": false,
+      "id": "10"
+    },
+    {
+      "created": "2025-09-20T09:55:00Z",
+      "value": "Perfect. I really appreciate the thoroughness. Looking forward to your feedback on the document I shared.",
+      "recieved": true,
+      "id": "11"
+    }
+  ]
+}
