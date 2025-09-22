@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useState } from 'react';
 import ListConversationsPane from './components/ListConversationsPane';
-import { CHAT_TYPE } from './types';
+import { CHAT_TYPE, MESSAGE_TYPE } from './types';
 import SelectedConversationPane from './components/SelectedConversationPane';
+import { PROFILE_IMAGE } from './constants';
 
 const chatsFilePath = '/data/chatsList.json';
 
@@ -9,6 +10,13 @@ function App() {
   console.log('App Rendered');
   const [chats, setChats] = useState([] as Array<CHAT_TYPE>);
   const [selectedChatId, setSelectedChatId] = useState(-1);
+
+  function handleSetChats(newChats: Array<CHAT_TYPE>) {
+    const newChatsJson = JSON.stringify(newChats);
+    localStorage.setItem('chats', newChatsJson);
+    console.log(newChatsJson);
+    setChats(newChats);
+  }
 
   const handleSelectedChatId = useCallback(function (id: number) {
     setSelectedChatId(id);
@@ -28,7 +36,7 @@ function App() {
       }
       return chat;
     });
-    setChats(newChats);
+    handleSetChats(newChats);
   }
 
   function handleDeleteChatMessage(chatId: number, messageId: number) {
@@ -42,8 +50,19 @@ function App() {
       }
       return chat;
     });
-    setChats(newChats);
+    handleSetChats(newChats);
   }
+
+  const handleStartNewChat = useCallback(function (chatName: string) {
+    const newChat = {
+      name: chatName,
+      id: chats.length + 1,
+      profileImg: PROFILE_IMAGE,
+      messages: [] as Array<MESSAGE_TYPE>,
+    };
+    const newChats = [...chats, newChat];
+    handleSetChats(newChats);
+  }, []);
 
   const selectedChat = selectedChatId
     ? chats.find((chat) => chat.id == selectedChatId)
@@ -54,8 +73,12 @@ function App() {
     async function fetchChats(filePath: string) {
       try {
         console.log('Fetching Chats...');
-        const response = await fetch(filePath);
-        const data: Array<CHAT_TYPE> = await response.json();
+        const jsonData = localStorage.getItem('chats');
+        if (!jsonData) {
+          console.log('No Chat History!');
+          return;
+        }
+        const data: Array<CHAT_TYPE> = JSON.parse(jsonData);
         if (ignore) {
           return;
         } else {
@@ -69,12 +92,17 @@ function App() {
     fetchChats(chatsFilePath);
     return () => {
       ignore = true;
+      // localStorage.clear();
     };
   }, []);
 
   return (
     <div className="flex h-screen">
-      <ListConversationsPane chats={chats} openChat={handleSelectedChatId} />
+      <ListConversationsPane
+        chats={chats}
+        openChat={handleSelectedChatId}
+        startNewChat={handleStartNewChat}
+      />
       {selectedChat ? (
         <SelectedConversationPane
           chat={selectedChat}

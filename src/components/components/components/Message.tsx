@@ -46,14 +46,17 @@ export default function Message({
 
       {isPopUpVisible && (
         <div
-          className="absolute top-0 left-0 p-4 flex gap-x-4 rounded-md bg-freinachtBlack hover:bg-red-400"
+          className="absolute top-0 left-0 p-2 flex gap-x-4 rounded-md bg-freinachtBlack hover:bg-red-400"
           onClick={() => {
             // console.log('Chat Message Deleted');
-            deleteMessage();
+            let response = confirm(
+              'Are you sure you want to delete the message. '
+            );
+            if (response) deleteMessage();
           }}
         >
           <p>Delete</p>
-          <img src="./delete.svg" className="w-6 aspect-square" />
+          <img src="./delete.svg" className="w-3 aspect-square" />
         </div>
       )}
     </div>

@@ -30,7 +30,11 @@ const ConversationCard = memo(function ({
       <div className="text-start">
         <h2 className="text-white">{chat.name}</h2>
         <p className="text-gray-400">
-          {getTruncatedMessage(chat.messages[chat.messages.length - 1].value)}
+          {chat.messages.length > 0
+            ? getTruncatedMessage(
+                chat.messages[chat.messages.length - 1]?.value
+              )
+            : null}
         </p>
       </div>
     </button>

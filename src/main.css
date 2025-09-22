@@ -24,3 +24,7 @@
 ::-webkit-scrollbar-thumb:hover {
   background: theme('colors.freinachtBlack');
 }
+
+.p {
+  font-size: 0.5rem;
+}

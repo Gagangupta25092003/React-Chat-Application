@@ -29,7 +29,7 @@ export default function SelectedConversationPane({
   return (
     <section className="flex-3 flex h-full bg-darkFeather">
       <div className="flex-2 h-full flex flex-col">
-        <ChatHeaderBar toggleSearch={handleIsSeachOpen} />
+        <ChatHeaderBar toggleSearch={handleIsSeachOpen} chatName={chat.name} />
         <Chats
           chat={chat}
           deleteMessage={(messageId) => {

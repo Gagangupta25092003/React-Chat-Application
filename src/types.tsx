@@ -7,7 +7,6 @@ export type MESSAGE_TYPE = {
 
 export type CHAT_TYPE = {
   name: string;
-  lastMsg: string;
   id: number;
   profileImg: string;
   messages: Array<MESSAGE_TYPE>;
