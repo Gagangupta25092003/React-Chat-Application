@@ -1,4 +1,4 @@
-import { memo, useState } from 'react';
+import { memo, useEffect, useRef, useState } from 'react';
 
 const MessageComposer = memo(function ({
   sendChatMessage,
@@ -6,10 +6,21 @@ const MessageComposer = memo(function ({
   sendChatMessage: (message: string) => void;
 }) {
   const [newMessage, setNewMessage] = useState('');
-  console.log('Rendered Message Composer!');
+  // console.log('Rendered Message Composer!');
   function handleNewMessage(msg: string) {
+    if (!msg) {
+      setNewMessage('');
+      return;
+    }
     msg = msg[0].toUpperCase() + msg.slice(1);
     setNewMessage(msg);
+  }
+
+  function handleSendChatMessage() {
+    if (newMessage) {
+      sendChatMessage(newMessage);
+      setNewMessage('');
+    }
   }
 
   return (
@@ -18,23 +29,27 @@ const MessageComposer = memo(function ({
         src="./attachment.svg"
         className="text-freinachtBlack w-6 aspect-square"
       />
-      <input
+      <textarea
         className=" text-white p-4  bg-darkFeather flex-1 rounded-xl"
         placeholder="Type a message here .."
         value={newMessage}
         onChange={(e) => {
           handleNewMessage(e.target.value);
         }}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' && e.shiftKey) {
+            e.preventDefault();
+            setNewMessage((prev) => prev + '\n');
+          } else if (e.key === 'Enter') {
+            e.preventDefault();
+            handleSendChatMessage();
+          }
+        }}
       />
       <img
         src="./send.svg"
         className="text-freinachtBlack w-8 aspect-square"
-        onClick={() => {
-          if (newMessage) {
-            sendChatMessage(newMessage);
-            setNewMessage('');
-          }
-        }}
+        onClick={handleSendChatMessage}
       />
     </div>
   );

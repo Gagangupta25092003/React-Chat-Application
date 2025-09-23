@@ -27,7 +27,7 @@ export default function SelectedConversationPane({
   }, []);
 
   return (
-    <section className="flex-3 flex h-full bg-darkFeather">
+    <section className="flex-grow-1 flex-shrink-2 overflow-x-auto flex h-full bg-darkFeather">
       <div className="flex-2 h-full flex flex-col">
         <ChatHeaderBar toggleSearch={handleIsSeachOpen} chatName={chat.name} />
         <Chats
