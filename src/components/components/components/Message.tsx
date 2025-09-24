@@ -1,6 +1,7 @@
-import { MouseEvent, useEffect, useState } from 'react';
+import { MouseEvent, useContext, useEffect, useState } from 'react';
 import { MESSAGE_TYPE } from '../../../types';
 import ContextMenu from './ContextMenu';
+import { AppModeContext } from '../../../App';
 
 export default function Message({
   message,
@@ -10,6 +11,7 @@ export default function Message({
   openContextMenu: (e: MouseEvent<HTMLDivElement>, messageId: number) => void;
 }) {
   const createdDate = new Date(message.created);
+  const appModeObject = useContext(AppModeContext);
 
   return (
     <div
@@ -24,9 +26,11 @@ export default function Message({
       }}
     >
       {message.value}
-      <div className="text-gray-300 text-end text-xs">
-        {createdDate.getHours() + ':' + createdDate.getMinutes()}
-      </div>
+      {appModeObject.mode == 'Normal' && (
+        <div className="text-gray-300 text-end text-xs">
+          {createdDate.getHours() + ':' + createdDate.getMinutes()}
+        </div>
+      )}
     </div>
   );
 }

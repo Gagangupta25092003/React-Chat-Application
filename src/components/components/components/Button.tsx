@@ -25,9 +25,9 @@ const Button = ({
   function getButtonColor() {
     switch (type) {
       case 'Cancel':
-        return 'bg-red-500';
+        return 'bg-red-500 hover:bg-red-700';
       case 'Success':
-        return 'bg-poolGreen';
+        return 'bg-poolGreen hover:bg-malachite';
       default:
         throw new Error('Wrong Prop Value in Button Component!');
     }
@@ -41,7 +41,7 @@ const Button = ({
   // console.log(buttonSizeTag);
   return (
     <button
-      className={`${buttonSizeTag} ${buttonColorTag} text-white text-sm py-2 px-4 rounded-md`}
+      className={`${buttonSizeTag} ${buttonColorTag} text-white text-sm rounded-md`}
       onClick={(e) => {
         e.stopPropagation();
         onClickFunction(e);

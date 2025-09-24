@@ -1,6 +1,6 @@
-import { memo, MouseEvent, MouseEventHandler, useState } from 'react';
+import { memo, MouseEvent, useContext, useRef, useState } from 'react';
 import { CHAT_TYPE } from '../../types';
-import ContextMenu from './components/ContextMenu';
+import { AppModeContext } from '../../App';
 
 const ConversationCard = memo(function ({
   chat,
@@ -11,64 +11,79 @@ const ConversationCard = memo(function ({
   openChat: (id: number) => void;
   openContextMenu: (e: MouseEvent<HTMLButtonElement>, chatId: number) => void;
 }) {
-  const [coords, setCoords] = useState({ x: 0, y: 0 });
   const [hovered, setHovered] = useState(false);
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    setCoords({ x: e.clientX, y: e.clientY });
-  };
+  const [tooltipPos, setTooltipPos] = useState<{
+    top: number;
+    left: number;
+  } | null>(null);
+  const appModeObject = useContext(AppModeContext);
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
   function getTruncatedMessage(message: string) {
     const truncatedMsg =
       message.length > 40 ? message.slice(0, 40) + '...' : message;
     const newLineIndex = truncatedMsg.indexOf('\n');
-    // console.log(truncatedMsg);
-    // console.log(newLineIndex);
     return newLineIndex > -1
       ? truncatedMsg.slice(0, newLineIndex) + '...'
       : truncatedMsg;
   }
 
+  const handleMouseEnter = () => {
+    if (buttonRef.current) {
+      const rect = buttonRef.current.getBoundingClientRect();
+      setTooltipPos({
+        top: rect.top + rect.height / 2, // vertical middle
+        left: rect.right + 8, // a little offset to the right
+      });
+      setHovered(true);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    setHovered(false);
+    setTooltipPos(null);
+  };
+
   return (
     <button
+      ref={buttonRef}
       id={chat.id as unknown as string}
-      className="group  flex w-full p-4 gap-x-4 border-t-1 border-freinachtBlack items-center hover:opacity-80"
-      onClick={() => {
-        openChat(chat.id);
-      }}
+      className="group relative flex w-full p-4 gap-x-4 border-t border-freinachtBlack items-center"
+      onClick={() => openChat(chat.id)}
       onContextMenu={(e) => {
         e.preventDefault();
         openContextMenu(e, chat.id);
       }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      onMouseMove={handleMouseMove}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
       <img
         src={chat.profileImg}
         alt={`${chat.name} Profile Image`}
-        className="w-12 aspect-1 rounded-full"
+        className="w-12 aspect-square rounded-full"
       />
       <div className="text-start">
         <h2 className="text-white">{chat.name}</h2>
         <p className="text-gray-400">
-          {chat.messages.length > 0
+          {chat.messages.length > 0 && appModeObject.mode === 'Normal'
             ? getTruncatedMessage(
                 chat.messages[chat.messages.length - 1]?.value
               )
             : null}
         </p>
       </div>
-      {hovered && chat.messages.length > 0 && (
-        <p
-          className="absolute bg-poolGreen text-white p-2 rounded z-50 whitespace-nowrap"
+
+      {hovered && tooltipPos && chat.messages.length > 0 && (
+        <div
+          className="fixed bg-poolGreen text-white p-2 rounded z-50 shadow  whitespace-pre-line"
           style={{
-            left: coords.x + 10, // offset to not overlap cursor
-            top: coords.y + 10,
+            top: tooltipPos.top,
+            left: tooltipPos.left - 10,
+            transform: 'translateY(-50%)', // perfectly center vertically
           }}
         >
-          {getTruncatedMessage(chat.messages[chat.messages.length - 1]?.value)}
-        </p>
+          {chat.messages[chat.messages.length - 1]?.value}
+        </div>
       )}
     </button>
   );

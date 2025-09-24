@@ -1,22 +1,18 @@
-import { MouseEvent, useContext, useState } from 'react';
+import { MouseEvent, useState } from 'react';
 import { createPortal } from 'react-dom';
 import CustomModal, { MODAL_PROPS_TYPE } from './CustomModal';
 import Button from './Button';
-import { AppModalContext } from '../../../App';
-import CustomButton, { CustomButtonType } from './CustomButton';
 
-const ButtonWithModal = ({
-  type = 'Normal',
+const Modal = ({
   modalPropObject,
   children,
 }: {
   size: 'Normal' | 'Large';
-  type: CustomButtonType;
+  type: 'Cancel' | 'Success';
   modalPropObject: MODAL_PROPS_TYPE;
   children: React.ReactNode;
 }) => {
   const [isModalOpen, setModalOpen] = useState(false);
-  const modalPropHandler = useContext(AppModalContext);
 
   function handleSetModal(value: boolean) {
     console.log(`Setting Modal Visibility to ${value}`);
@@ -50,33 +46,18 @@ const ButtonWithModal = ({
           },
         };
 
-  function handleOpenModal() {
-    if (newmodalPropObject.type === 'Prompt') {
-      modalPropHandler.handlePromptModalProps(
-        newmodalPropObject.onSuccess,
-        newmodalPropObject.text,
-        newmodalPropObject.onCancel
-      );
-    } else {
-      modalPropHandler.handleOtherModalProps(
-        newmodalPropObject.onSuccess,
-        newmodalPropObject.text,
-        newmodalPropObject.type,
-        newmodalPropObject.onCancel
-      );
-    }
-    modalPropHandler.openModal();
-  }
+  const root = document.getElementById('App');
 
   console.log(` Modal Visibility is ${isModalOpen} ${modalPropObject.type}`);
 
   return (
     <>
-      <CustomButton type={type} onClickFunction={handleOpenModal}>
-        {children}
-      </CustomButton>
+      {isModalOpen &&
+        (root
+          ? createPortal(<CustomModal {...newmodalPropObject} />, root)
+          : null)}
     </>
   );
 };
 
-export default ButtonWithModal;
+export default Modal;

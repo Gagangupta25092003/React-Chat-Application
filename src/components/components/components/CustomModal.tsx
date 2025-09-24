@@ -1,5 +1,6 @@
 import { KeyboardEvent, MouseEvent, useState } from 'react';
 import Button from './Button';
+import CustomButton from './CustomButton';
 
 type ConfirmOrAlertProps = {
   type: 'Confirm' | 'Alert';
@@ -17,7 +18,17 @@ type PromptProps = {
 
 export type MODAL_PROPS_TYPE = ConfirmOrAlertProps | PromptProps;
 
-const CustomModal = ({ type, text, onSuccess, onCancel }: MODAL_PROPS_TYPE) => {
+export type MODAL_PROPS_WITH_CLOSE = MODAL_PROPS_TYPE & {
+  closeModal: () => void;
+};
+
+const CustomModal = ({
+  type,
+  text,
+  onSuccess,
+  onCancel,
+  closeModal,
+}: MODAL_PROPS_WITH_CLOSE) => {
   const [inputText, setInputText] = useState('');
 
   let handleInputText: React.ChangeEventHandler<HTMLInputElement> = (e) => {
@@ -35,22 +46,25 @@ const CustomModal = ({ type, text, onSuccess, onCancel }: MODAL_PROPS_TYPE) => {
     } else {
       onSuccess();
     }
+    closeModal();
   };
   const customOnCancel = (e: MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
     onCancel();
+    closeModal();
+    console.log('Closing Modal');
   };
 
   const modalText = <h2>{text}</h2>;
   const cancelButton = (
-    <Button onClickFunction={customOnCancel} size="Normal" type="Cancel">
+    <CustomButton onClickFunction={customOnCancel} type="Cancel">
       <p>Cancel</p>{' '}
-    </Button>
+    </CustomButton>
   );
   const successButton = (
-    <Button onClickFunction={customOnSuccess} size={'Normal'} type={'Success'}>
+    <CustomButton onClickFunction={customOnSuccess} type={'Green'}>
       <p>{type === 'Confirm' ? 'Confirm' : 'Ok'}</p>{' '}
-    </Button>
+    </CustomButton>
   );
   function getInsideLayout() {
     switch (type) {

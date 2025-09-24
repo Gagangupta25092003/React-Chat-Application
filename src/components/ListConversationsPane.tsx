@@ -19,6 +19,7 @@ export default function ListConversationsPane({
   deleteChat: (id: number) => void;
 }) {
   const [isContextMenuOpen, setIsContextMenuOpen] = useState(false);
+
   const [contextMenuData, setContextMenuData] = useState({
     x: 0,
     y: 0,
@@ -61,7 +62,7 @@ export default function ListConversationsPane({
             onSuccess: startNewChat,
             onCancel: () => {},
           }}
-          type="Success"
+          type="Normal"
           size="Large"
         >
           <p>Add a new Chat</p>
@@ -92,7 +93,7 @@ export default function ListConversationsPane({
           contextMenuData={contextMenuData}
         >
           <ButtonWithModal
-            type="Cancel"
+            type="Green"
             size="Normal"
             modalPropObject={{
               type: 'Confirm',

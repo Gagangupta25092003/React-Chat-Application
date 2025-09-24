@@ -11,10 +11,16 @@ export default function SelectedConversationPane({
   chat,
   sendMessage,
   deleteMessage,
+  editMessage,
 }: {
   chat: CHAT_TYPE;
   sendMessage: (chatId: number, message: string) => void;
   deleteMessage: (chatId: number, messageId: number) => void;
+  editMessage: (
+    chatId: number,
+    messageId: number,
+    newMessageString: string
+  ) => void;
 }) {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
@@ -26,6 +32,13 @@ export default function SelectedConversationPane({
     sendMessage(chat.id, message);
   }, []);
 
+  const editChatMessage = useCallback(function (
+    messageId: number,
+    messageString: string
+  ) {
+    editMessage(chat.id, messageId, messageString);
+  }, []);
+
   return (
     <section className="flex-grow-1 flex-shrink-2 overflow-x-auto flex h-full bg-darkFeather">
       <div className="flex-2 h-full flex flex-col">
@@ -35,6 +48,7 @@ export default function SelectedConversationPane({
           deleteMessage={(messageId) => {
             deleteMessage(chat.id, messageId);
           }}
+          editMessage={editChatMessage}
         />
         <MessageComposer sendChatMessage={sendChatMessage} />
       </div>
