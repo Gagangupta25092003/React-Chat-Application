@@ -5,14 +5,11 @@ import {
   useMemo,
   useState,
 } from 'react';
-import ListConversationsPane from './components/ListConversationsPane';
 import { CHAT_TYPE, MESSAGE_TYPE } from './types';
-import SelectedConversationPane from './components/SelectedConversationPane';
+import { SelectedConversationPane } from './SelectedConversationPane';
 import { PROFILE_IMAGE } from './constants';
-import CustomModal, {
-  MODAL_PROPS_TYPE,
-  MODAL_PROPS_WITH_CLOSE,
-} from './components/components/components/CustomModal';
+import { CustomModal, MODAL_PROPS_WITH_CLOSE } from './CustomModal';
+import { ListConversationsPane } from './ListConversationPane';
 
 const chatsFilePath = '/data/chatsList.json';
 

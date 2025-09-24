@@ -1,9 +1,8 @@
 import { MouseEvent, useContext, useEffect, useState } from 'react';
 import { MESSAGE_TYPE } from '../../../types';
-import ContextMenu from './ContextMenu';
 import { AppModeContext } from '../../../App';
 
-export default function Message({
+export function Message({
   message,
   openContextMenu,
 }: {

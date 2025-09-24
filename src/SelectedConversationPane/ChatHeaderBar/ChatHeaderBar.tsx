@@ -1,6 +1,6 @@
 import { memo } from 'react';
 
-const ChatHeaderBar = memo(function ({
+export const ChatHeaderBar = memo(function ({
   toggleSearch,
   chatName,
 }: {
@@ -27,5 +27,3 @@ const ChatHeaderBar = memo(function ({
     </div>
   );
 });
-
-export default ChatHeaderBar;

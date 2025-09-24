@@ -1,10 +1,10 @@
 import { MouseEvent, useState } from 'react';
 import { CHAT_TYPE } from '../../types';
-import Message from './components/Message';
-import ContextMenu from './components/ContextMenu';
-import ButtonWithModal from './components/ButtonWithModal';
+import { Message } from './Message/';
+import ContextMenu from '../../components/ContextMenu';
+import ButtonWithModal from '../../components/ButtonWithModal';
 
-export default function Chats({
+export function Chats({
   chat,
   deleteMessage,
   editMessage,

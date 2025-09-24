@@ -1,9 +1,7 @@
-import { MouseEvent, useContext, useState } from 'react';
-import { createPortal } from 'react-dom';
-import CustomModal, { MODAL_PROPS_TYPE } from './CustomModal';
-import Button from './Button';
-import { AppModalContext } from '../../../App';
+import { useContext, useState } from 'react';
+import { AppModalContext } from '../App';
 import CustomButton, { CustomButtonType } from './CustomButton';
+import { MODAL_PROPS_TYPE } from '../CustomModal/CustomModal';
 
 const ButtonWithModal = ({
   type = 'Normal',

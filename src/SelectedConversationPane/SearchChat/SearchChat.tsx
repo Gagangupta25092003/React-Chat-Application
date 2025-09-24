@@ -1,4 +1,4 @@
-export default function SearchChat({ hideSearch }: { hideSearch: () => void }) {
+export function SearchChat({ hideSearch }: { hideSearch: () => void }) {
   return (
     <div className="flex-1 h-full border-l-2 border-freinachtBlack">
       <div className="p-4 h-18 flex items-center text-white bg-freinachtBlack gap-x-4">

@@ -1,6 +1,6 @@
-import { memo, useEffect, useRef, useState } from 'react';
+import { memo, useState } from 'react';
 
-const MessageComposer = memo(function ({
+export const MessageComposer = memo(function ({
   sendChatMessage,
 }: {
   sendChatMessage: (message: string) => void;
@@ -54,5 +54,3 @@ const MessageComposer = memo(function ({
     </div>
   );
 });
-
-export default MessageComposer;

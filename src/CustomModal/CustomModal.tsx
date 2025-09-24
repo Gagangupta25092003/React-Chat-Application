@@ -1,6 +1,5 @@
 import { KeyboardEvent, MouseEvent, useState } from 'react';
-import Button from './Button';
-import CustomButton from './CustomButton';
+import CustomButton from '../components/CustomButton';
 
 type ConfirmOrAlertProps = {
   type: 'Confirm' | 'Alert';
@@ -22,7 +21,7 @@ export type MODAL_PROPS_WITH_CLOSE = MODAL_PROPS_TYPE & {
   closeModal: () => void;
 };
 
-const CustomModal = ({
+export const CustomModal = ({
   type,
   text,
   onSuccess,
@@ -116,5 +115,3 @@ const CustomModal = ({
     </div>
   );
 };
-
-export default CustomModal;

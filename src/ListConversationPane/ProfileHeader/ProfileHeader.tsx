@@ -1,12 +1,9 @@
-import { createPortal } from 'react-dom';
-import Button from './components/Button';
-import CustomModal from './components/CustomModal';
-import ButtonWithModal from './components/ButtonWithModal';
 import { MouseEvent, useContext, useState } from 'react';
-import ContextMenu from './components/ContextMenu';
+import ButtonWithModal from '../../components/ButtonWithModal';
+import ContextMenu from '../../components/ContextMenu';
 import { AppModeContext } from '../../App';
 
-export default function ProfileBar({
+export function ProfileHeader({
   startNewChat,
 }: {
   startNewChat: (message: string) => void;

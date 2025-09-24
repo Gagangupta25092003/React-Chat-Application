@@ -1,4 +1,4 @@
-export default function SearchChatsBar() {
+export function SearchChatsBar() {
   return (
     <div className="h-auto w-full p-2 ">
       <input

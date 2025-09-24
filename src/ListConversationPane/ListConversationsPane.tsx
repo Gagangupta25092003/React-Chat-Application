@@ -1,13 +1,12 @@
 import { MouseEvent, useCallback, useState } from 'react';
 import { CHAT_TYPE } from '../types';
-import ConversationCard from './components/ConversationCard';
-import ProfileBar from './components/ProfileBar';
-import SearchChatsBar from './components/SearchChatsBar';
-import ContextMenu from './components/components/ContextMenu';
-import Button from './components/components/Button';
-import ButtonWithModal from './components/components/ButtonWithModal';
+import { SearchChatsBar } from './SearchChatsBar';
+import ContextMenu from '../components/ContextMenu';
+import ButtonWithModal from '../components/ButtonWithModal';
+import { ProfileHeader } from './ProfileHeader';
+import { ConversationCard } from './ConversatinCard';
 
-export default function ListConversationsPane({
+export function ListConversationsPane({
   chats,
   openChat,
   startNewChat,
@@ -73,7 +72,7 @@ export default function ListConversationsPane({
   // console.log(chats);
   return (
     <div className="flex-grow-0 basis-md flex-shrink-1 border-r-2 border-freinachtBlack h-full overflow-y-scroll bg-darkFeather ">
-      <ProfileBar startNewChat={startNewChat} />
+      <ProfileHeader startNewChat={startNewChat} />
       <SearchChatsBar />
       {chats.map((chat) => {
         return (

@@ -1,13 +1,11 @@
 import { useCallback, useEffect, useState } from 'react';
-import ChatHeaderBar from './components/ChatHeaderBar';
-import Chats from './components/Chats';
-import MessageComposer from './components/MessageComposer';
+import { ChatHeaderBar } from './ChatHeaderBar';
 import { CHAT_TYPE } from '../types';
-import SearchChat from './components/SearchChat';
+import { SearchChat } from './SearchChat';
+import { MessageComposer } from './MessageComposer';
+import { Chats } from './Chats';
 
-const chatFilePath = './data/singleChatPath.json';
-
-export default function SelectedConversationPane({
+export function SelectedConversationPane({
   chat,
   sendMessage,
   deleteMessage,

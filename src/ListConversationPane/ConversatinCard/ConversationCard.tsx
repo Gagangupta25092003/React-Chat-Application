@@ -2,7 +2,7 @@ import { memo, MouseEvent, useContext, useRef, useState } from 'react';
 import { CHAT_TYPE } from '../../types';
 import { AppModeContext } from '../../App';
 
-const ConversationCard = memo(function ({
+export const ConversationCard = memo(function ({
   chat,
   openChat,
   openContextMenu,
@@ -88,5 +88,3 @@ const ConversationCard = memo(function ({
     </button>
   );
 });
-
-export default ConversationCard;
