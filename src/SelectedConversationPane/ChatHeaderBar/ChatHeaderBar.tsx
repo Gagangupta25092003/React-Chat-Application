@@ -1,12 +1,14 @@
 import { memo } from 'react';
 
+export type ChatHeaderBarPropsType = {
+  toggleSearch: () => void;
+  chatName: string;
+};
+
 export const ChatHeaderBar = memo(function ({
   toggleSearch,
   chatName,
-}: {
-  toggleSearch: () => void;
-  chatName: string;
-}) {
+}: ChatHeaderBarPropsType) {
   // console.log('Rendering Chat Header Bar.');
 
   return (

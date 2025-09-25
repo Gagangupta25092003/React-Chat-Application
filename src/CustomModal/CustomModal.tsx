@@ -1,25 +1,6 @@
 import { KeyboardEvent, MouseEvent, useState } from 'react';
-import CustomButton from '../components/CustomButton';
-
-type ConfirmOrAlertProps = {
-  type: 'Confirm' | 'Alert';
-  text: string;
-  onSuccess: () => void;
-  onCancel: () => void;
-};
-
-type PromptProps = {
-  type: 'Prompt';
-  text: string;
-  onSuccess: (message: string) => void;
-  onCancel: () => void;
-};
-
-export type MODAL_PROPS_TYPE = ConfirmOrAlertProps | PromptProps;
-
-export type MODAL_PROPS_WITH_CLOSE = MODAL_PROPS_TYPE & {
-  closeModal: () => void;
-};
+import CustomButton from '../modules/CustomButton/CustomButton';
+import { MODAL_PROPS_WITH_CLOSE } from './types';
 
 export const CustomModal = ({
   type,

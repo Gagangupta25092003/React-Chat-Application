@@ -1,14 +1,13 @@
 import { MouseEvent, useContext, useEffect, useState } from 'react';
 import { MESSAGE_TYPE } from '../../../types';
-import { AppModeContext } from '../../../App';
+import { AppModeContext } from '../../../contexts';
 
-export function Message({
-  message,
-  openContextMenu,
-}: {
+export type MessagePropsType = {
   message: MESSAGE_TYPE;
   openContextMenu: (e: MouseEvent<HTMLDivElement>, messageId: number) => void;
-}) {
+};
+
+export function Message({ message, openContextMenu }: MessagePropsType) {
   const createdDate = new Date(message.created);
   const appModeObject = useContext(AppModeContext);
 

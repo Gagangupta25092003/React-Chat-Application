@@ -1,16 +1,18 @@
 import { memo, MouseEvent, useContext, useRef, useState } from 'react';
 import { CHAT_TYPE } from '../../types';
-import { AppModeContext } from '../../App';
+import { AppModeContext } from '../../contexts';
+
+export type ConversatinCardPropsType = {
+  chat: CHAT_TYPE;
+  openChat: (id: number) => void;
+  openContextMenu: (e: MouseEvent<HTMLButtonElement>, chatId: number) => void;
+};
 
 export const ConversationCard = memo(function ({
   chat,
   openChat,
   openContextMenu,
-}: {
-  chat: CHAT_TYPE;
-  openChat: (id: number) => void;
-  openContextMenu: (e: MouseEvent<HTMLButtonElement>, chatId: number) => void;
-}) {
+}: ConversatinCardPropsType) {
   const [hovered, setHovered] = useState(false);
   const [tooltipPos, setTooltipPos] = useState<{
     top: number;

@@ -1,10 +1,12 @@
 import { memo, useState } from 'react';
 
+export type MessageComposerType = {
+  sendChatMessage: (message: string) => void;
+};
+
 export const MessageComposer = memo(function ({
   sendChatMessage,
-}: {
-  sendChatMessage: (message: string) => void;
-}) {
+}: MessageComposerType) {
   const [newMessage, setNewMessage] = useState('');
   // console.log('Rendered Message Composer!');
   function handleNewMessage(msg: string) {

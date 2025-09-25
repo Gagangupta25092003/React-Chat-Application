@@ -1,18 +1,16 @@
 import { MouseEvent, useState } from 'react';
 import { CHAT_TYPE } from '../../types';
 import { Message } from './Message/';
-import ContextMenu from '../../components/ContextMenu';
-import ButtonWithModal from '../../components/ButtonWithModal';
+import ContextMenu from '../../modules/ContextMenu/ContextMenu';
+import { ButtonWithModal } from '../../modules/ButtonWithModal';
 
-export function Chats({
-  chat,
-  deleteMessage,
-  editMessage,
-}: {
+export type ChatsPropsType = {
   chat: CHAT_TYPE;
   deleteMessage: (messageId: number) => void;
   editMessage: (messageId: number, newMessageString: string) => void;
-}) {
+};
+
+export function Chats({ chat, deleteMessage, editMessage }: ChatsPropsType) {
   const [isContextMenuOpen, setIsContextMenuOpen] = useState(false);
   const [contextMenuData, setContextMenuData] = useState({
     x: 0,

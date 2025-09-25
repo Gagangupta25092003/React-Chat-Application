@@ -1,17 +1,11 @@
 import { useEffect } from 'react';
+import { ButtonWithModalTypes } from './types';
 
-const ContextMenu = ({
+export const ContextMenu = ({
   closeContextMenu,
   contextMenuData,
   children,
-}: {
-  closeContextMenu: (event: MouseEvent) => void;
-  contextMenuData: {
-    x: number;
-    y: number;
-  };
-  children: React.ReactNode;
-}) => {
+}: ButtonWithModalTypes) => {
   useEffect(() => {
     // console.log('asdn');
     document.addEventListener('click', closeContextMenu);

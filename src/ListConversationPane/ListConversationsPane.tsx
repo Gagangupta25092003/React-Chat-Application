@@ -1,22 +1,24 @@
 import { MouseEvent, useCallback, useState } from 'react';
 import { CHAT_TYPE } from '../types';
 import { SearchChatsBar } from './SearchChatsBar';
-import ContextMenu from '../components/ContextMenu';
-import ButtonWithModal from '../components/ButtonWithModal';
+import ContextMenu from '../modules/ContextMenu/ContextMenu';
+import { ButtonWithModal } from '../modules/ButtonWithModal';
 import { ProfileHeader } from './ProfileHeader';
 import { ConversationCard } from './ConversatinCard';
+
+export type ListConversationPanePropsType = {
+  chats: Array<CHAT_TYPE>;
+  openChat: (id: number) => void;
+  startNewChat: (name: string) => void;
+  deleteChat: (id: number) => void;
+};
 
 export function ListConversationsPane({
   chats,
   openChat,
   startNewChat,
   deleteChat,
-}: {
-  chats: Array<CHAT_TYPE>;
-  openChat: (id: number) => void;
-  startNewChat: (name: string) => void;
-  deleteChat: (id: number) => void;
-}) {
+}: ListConversationPanePropsType) {
   const [isContextMenuOpen, setIsContextMenuOpen] = useState(false);
 
   const [contextMenuData, setContextMenuData] = useState({

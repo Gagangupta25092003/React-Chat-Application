@@ -1,16 +1,11 @@
 import { MouseEvent } from 'react';
+import { CustomButtonPropTypes, CustomButtonType } from './types';
 
-export type CustomButtonType = 'Normal' | 'Green' | 'Cancel';
-
-const CustomButton = ({
+export const CustomButton = ({
   type = 'Normal',
   onClickFunction,
   children,
-}: {
-  onClickFunction: (e: MouseEvent<HTMLButtonElement>) => void;
-  type?: CustomButtonType;
-  children: React.ReactNode;
-}) => {
+}: CustomButtonPropTypes) => {
   function getButtonColor() {
     switch (type) {
       case 'Normal':

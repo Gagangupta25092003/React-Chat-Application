@@ -1,4 +1,6 @@
-export function SearchChat({ hideSearch }: { hideSearch: () => void }) {
+export type SearchChatPropsType = { hideSearch: () => void };
+
+export function SearchChat({ hideSearch }: SearchChatPropsType) {
   return (
     <div className="flex-1 h-full border-l-2 border-freinachtBlack">
       <div className="p-4 h-18 flex items-center text-white bg-freinachtBlack gap-x-4">

@@ -1,18 +1,14 @@
 import { useContext, useState } from 'react';
-import { AppModalContext } from '../App';
-import CustomButton, { CustomButtonType } from './CustomButton';
-import { MODAL_PROPS_TYPE } from '../CustomModal/CustomModal';
+import { CustomButton } from '../CustomButton/CustomButton';
+import { MODAL_PROPS_TYPE } from '../../CustomModal/types';
+import { ButtonWithModalPropsTypes } from './types';
+import { AppModalContext } from '../../contexts';
 
-const ButtonWithModal = ({
+export const ButtonWithModal = ({
   type = 'Normal',
   modalPropObject,
   children,
-}: {
-  size: 'Normal' | 'Large';
-  type: CustomButtonType;
-  modalPropObject: MODAL_PROPS_TYPE;
-  children: React.ReactNode;
-}) => {
+}: ButtonWithModalPropsTypes) => {
   const [isModalOpen, setModalOpen] = useState(false);
   const modalPropHandler = useContext(AppModalContext);
 
@@ -76,5 +72,3 @@ const ButtonWithModal = ({
     </>
   );
 };
-
-export default ButtonWithModal;

@@ -1,13 +1,13 @@
 import { MouseEvent, useContext, useState } from 'react';
-import ButtonWithModal from '../../components/ButtonWithModal';
-import ContextMenu from '../../components/ContextMenu';
-import { AppModeContext } from '../../App';
+import { ButtonWithModal } from '../../modules/ButtonWithModal';
+import ContextMenu from '../../modules/ContextMenu/ContextMenu';
+import { AppModeContext } from '../../contexts';
 
-export function ProfileHeader({
-  startNewChat,
-}: {
+export type ProfileHeaderPropsType = {
   startNewChat: (message: string) => void;
-}) {
+};
+
+export function ProfileHeader({ startNewChat }: ProfileHeaderPropsType) {
   const [isContextMenuOpen, setIsContextMenuOpen] = useState(false);
   const [contextMenuData, setContextMenuData] = useState({
     x: 0,
