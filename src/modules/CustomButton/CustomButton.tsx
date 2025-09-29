@@ -25,7 +25,7 @@ export const CustomButton = ({
     <button
       className={`${buttonColorTag} text-white text-sm rounded-md flex gap-x-4  py-2 px-4 items-center`}
       onClick={(e) => {
-        e.stopPropagation();
+        // e.stopPropagation();
         onClickFunction(e);
       }}
     >

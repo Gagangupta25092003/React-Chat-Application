@@ -21,7 +21,7 @@ export function Chats({ chat, deleteMessage, editMessage }: ChatsPropsType) {
 
   const handleDeleteMessage = useCallback(() => {
     deleteMessage(contextMenuData.messageId);
-  }, [deleteMessage]);
+  }, [deleteMessage, contextMenuData]);
   const handleEditMessage = useCallback(
     (input: string) => {
       editMessage(contextMenuData.messageId, input);
