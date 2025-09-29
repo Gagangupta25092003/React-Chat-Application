@@ -32,7 +32,11 @@ function App() {
       <AppModalContext.Provider value={appModalValues}>
         <div className="flex h-screen" id="App">
           <ListConversationsPane {...listConversationProps} />
-          <SelectedConversationPane {...selectedConversationPaneProps} />
+          {selectedConversationPaneProps.chat ? (
+            <SelectedConversationPane {...selectedConversationPaneProps} />
+          ) : (
+            <div className="bg-darkFeather grow-1" />
+          )}
 
           {isModalOpen && (root ? <CustomModal {...modalProperties} /> : null)}
         </div>

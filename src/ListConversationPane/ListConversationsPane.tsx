@@ -1,10 +1,11 @@
-import { MouseEvent, useCallback, useState } from 'react';
+import { memo, MouseEvent, useCallback, useState } from 'react';
 import { CHAT_TYPE } from '../types';
 import { SearchChatsBar } from './SearchChatsBar';
 import ContextMenu from '../modules/ContextMenu/ContextMenu';
 import { ButtonWithModal } from '../modules/ButtonWithModal';
 import { ProfileHeader } from './ProfileHeader';
 import { ConversationCard } from './ConversatinCard';
+import { useHandleContextMenu } from './hooks/useHandleContextMenu';
 
 export type ListConversationPanePropsType = {
   chats: Array<CHAT_TYPE>;
@@ -13,44 +14,22 @@ export type ListConversationPanePropsType = {
   deleteChat: (id: number) => void;
 };
 
-export function ListConversationsPane({
+export const ListConversationsPane = memo(function ({
   chats,
   openChat,
   startNewChat,
   deleteChat,
 }: ListConversationPanePropsType) {
-  const [isContextMenuOpen, setIsContextMenuOpen] = useState(false);
+  const {
+    isContextMenuOpen,
+    contextMenuData,
+    handleOpenContextMenu,
+    handleCloseContextMenu,
+  } = useHandleContextMenu();
 
-  const [contextMenuData, setContextMenuData] = useState({
-    x: 0,
-    y: 0,
-    chatId: -1,
-  });
-
-  const handleOpenContextMenu = (
-    e: MouseEvent<HTMLButtonElement>,
-    chatId: number
-  ) => {
-    setContextMenuData({
-      x: e.clientX,
-      y: e.clientY,
-      chatId: chatId,
-    });
-    setIsContextMenuOpen(true);
-  };
-
-  const startNewChatWithPrompt = useCallback(
-    function () {
-      const chatName = prompt('Enter Chat Name', 'Lakshya');
-      if (!chatName) {
-        alert('Chat Name cannot be empty');
-      } else {
-        // console.log(`Chat Name: ${chatName}`);
-        startNewChat(chatName);
-      }
-    },
-    [startNewChat]
-  );
+  const handleDeleteChat = useCallback(() => {
+    deleteChat(contextMenuData.chatId);
+  }, [contextMenuData, deleteChat]);
 
   if (chats.length == 0) {
     return (
@@ -88,9 +67,7 @@ export function ListConversationsPane({
       })}
       {isContextMenuOpen && (
         <ContextMenu
-          closeContextMenu={() => {
-            setIsContextMenuOpen(false);
-          }}
+          closeContextMenu={handleCloseContextMenu}
           contextMenuData={contextMenuData}
         >
           <ButtonWithModal
@@ -100,10 +77,7 @@ export function ListConversationsPane({
               type: 'Confirm',
               text: 'Are you sure you want to delete Chat!',
               onCancel: () => {},
-              onSuccess: () => {
-                deleteChat(contextMenuData.chatId);
-                setIsContextMenuOpen(false);
-              },
+              onSuccess: handleDeleteChat,
             }}
           >
             <div className="flex gap-x-4">
@@ -115,4 +89,4 @@ export function ListConversationsPane({
       )}
     </div>
   );
-}
+});

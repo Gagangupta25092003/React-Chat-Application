@@ -9,8 +9,6 @@ export const ChatHeaderBar = memo(function ({
   toggleSearch,
   chatName,
 }: ChatHeaderBarPropsType) {
-  // console.log('Rendering Chat Header Bar.');
-
   return (
     <div className="flex w-full p-4 bg-freinachtBlack text-white items-center gap-x-4">
       <img

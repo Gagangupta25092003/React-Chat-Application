@@ -1,11 +1,20 @@
-import { memo, MouseEvent, useContext, useRef, useState } from 'react';
+import { memo, MouseEvent, useCallback, useContext } from 'react';
 import { CHAT_TYPE } from '../../types';
 import { AppModeContext } from '../../contexts';
+import { useHandleToolTip } from './hooks/useHandleToolTip';
 
 export type ConversatinCardPropsType = {
   chat: CHAT_TYPE;
   openChat: (id: number) => void;
   openContextMenu: (e: MouseEvent<HTMLButtonElement>, chatId: number) => void;
+};
+const getTruncatedMessage = (message: string) => {
+  const truncatedMsg =
+    message.length > 40 ? message.slice(0, 40) + '...' : message;
+  const newLineIndex = truncatedMsg.indexOf('\n');
+  return newLineIndex > -1
+    ? truncatedMsg.slice(0, newLineIndex) + '...'
+    : truncatedMsg;
 };
 
 export const ConversationCard = memo(function ({
@@ -13,49 +22,28 @@ export const ConversationCard = memo(function ({
   openChat,
   openContextMenu,
 }: ConversatinCardPropsType) {
-  const [hovered, setHovered] = useState(false);
-  const [tooltipPos, setTooltipPos] = useState<{
-    top: number;
-    left: number;
-  } | null>(null);
   const appModeObject = useContext(AppModeContext);
-  const buttonRef = useRef<HTMLButtonElement>(null);
 
-  function getTruncatedMessage(message: string) {
-    const truncatedMsg =
-      message.length > 40 ? message.slice(0, 40) + '...' : message;
-    const newLineIndex = truncatedMsg.indexOf('\n');
-    return newLineIndex > -1
-      ? truncatedMsg.slice(0, newLineIndex) + '...'
-      : truncatedMsg;
-  }
+  const { hovered, tooltipPos, buttonRef, handleMouseEnter, handleMouseLeave } =
+    useHandleToolTip();
 
-  const handleMouseEnter = () => {
-    if (buttonRef.current) {
-      const rect = buttonRef.current.getBoundingClientRect();
-      setTooltipPos({
-        top: rect.top + rect.height / 2, // vertical middle
-        left: rect.right + 8, // a little offset to the right
-      });
-      setHovered(true);
-    }
-  };
+  const handleContextMenu = useCallback(
+    (e: MouseEvent<HTMLButtonElement>) => {
+      e.preventDefault();
+      openContextMenu(e, chat.id);
+    },
+    [chat]
+  );
 
-  const handleMouseLeave = () => {
-    setHovered(false);
-    setTooltipPos(null);
-  };
+  const handleOpenChat = useCallback(() => openChat(chat.id), [chat]);
 
   return (
     <button
       ref={buttonRef}
       id={chat.id as unknown as string}
       className="group relative flex w-full p-4 gap-x-4 border-t border-freinachtBlack items-center"
-      onClick={() => openChat(chat.id)}
-      onContextMenu={(e) => {
-        e.preventDefault();
-        openContextMenu(e, chat.id);
-      }}
+      onClick={handleOpenChat}
+      onContextMenu={handleContextMenu}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >

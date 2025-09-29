@@ -17,10 +17,6 @@ export function SelectedConversationPane({
     { chat, sendMessage, deleteMessage, editMessage }
   );
 
-  if (!chat) {
-    return <div className="flex-1 bg-darkFeather" />;
-  }
-
   return (
     <section className="flex-grow-1 flex-shrink-2 overflow-x-auto flex h-full bg-darkFeather">
       <div className="flex-2 h-full flex flex-col">

@@ -1,4 +1,5 @@
 import { memo, useState } from 'react';
+import { useHandleChatInput } from './hooks/useHandleChatInput';
 
 export type MessageComposerType = {
   sendChatMessage: (message: string) => void;
@@ -7,23 +8,14 @@ export type MessageComposerType = {
 export const MessageComposer = memo(function ({
   sendChatMessage,
 }: MessageComposerType) {
-  const [newMessage, setNewMessage] = useState('');
-  // console.log('Rendered Message Composer!');
-  function handleNewMessage(msg: string) {
-    if (!msg) {
-      setNewMessage('');
-      return;
-    }
-    msg = msg[0].toUpperCase() + msg.slice(1);
-    setNewMessage(msg);
-  }
-
-  function handleSendChatMessage() {
-    if (newMessage) {
-      sendChatMessage(newMessage);
-      setNewMessage('');
-    }
-  }
+  const {
+    newMessage,
+    handleNewMessage,
+    handleSendChatMessage,
+    handleKeyboardDown,
+  } = useHandleChatInput({
+    sendChatMessage,
+  });
 
   return (
     <div className="p-4 flex gap-x-4 bg-freinachtBlack">
@@ -38,15 +30,7 @@ export const MessageComposer = memo(function ({
         onChange={(e) => {
           handleNewMessage(e.target.value);
         }}
-        onKeyDown={(e) => {
-          if (e.key === 'Enter' && e.shiftKey) {
-            e.preventDefault();
-            setNewMessage((prev) => prev + '\n');
-          } else if (e.key === 'Enter') {
-            e.preventDefault();
-            handleSendChatMessage();
-          }
-        }}
+        onKeyDown={handleKeyboardDown}
       />
       <img
         src="./send.svg"

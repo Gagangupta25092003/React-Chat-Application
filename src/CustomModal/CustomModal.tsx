@@ -1,4 +1,4 @@
-import { KeyboardEvent, MouseEvent, useState } from 'react';
+import { KeyboardEvent, MouseEvent, useMemo, useState } from 'react';
 import CustomButton from '../modules/CustomButton/CustomButton';
 import { MODAL_PROPS_WITH_CLOSE } from './types';
 
@@ -32,14 +32,17 @@ export const CustomModal = ({
     e.stopPropagation();
     onCancel();
     closeModal();
-    console.log('Closing Modal');
+    // console.log('Closing Modal');
   };
 
   const modalText = <h2>{text}</h2>;
-  const cancelButton = (
-    <CustomButton onClickFunction={customOnCancel} type="Cancel">
-      <p>Cancel</p>{' '}
-    </CustomButton>
+  const cancelButton = useMemo(
+    () => (
+      <CustomButton onClickFunction={customOnCancel} type="Cancel">
+        <p>Cancel</p>{' '}
+      </CustomButton>
+    ),
+    []
   );
   const successButton = (
     <CustomButton onClickFunction={customOnSuccess} type={'Green'}>

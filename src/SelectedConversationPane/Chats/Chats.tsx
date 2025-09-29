@@ -1,8 +1,9 @@
-import { MouseEvent, useState } from 'react';
 import { CHAT_TYPE } from '../../types';
 import { Message } from './Message/';
 import ContextMenu from '../../modules/ContextMenu/ContextMenu';
 import { ButtonWithModal } from '../../modules/ButtonWithModal';
+import { useHandleChatMessages } from './hooks/useHandleChatMessages';
+import { useCallback } from 'react';
 
 export type ChatsPropsType = {
   chat: CHAT_TYPE;
@@ -11,24 +12,23 @@ export type ChatsPropsType = {
 };
 
 export function Chats({ chat, deleteMessage, editMessage }: ChatsPropsType) {
-  const [isContextMenuOpen, setIsContextMenuOpen] = useState(false);
-  const [contextMenuData, setContextMenuData] = useState({
-    x: 0,
-    y: 0,
-    messageId: -1,
-  });
+  const {
+    isContextMenuOpen,
+    contextMenuData,
+    handleOpenContextMenu,
+    closeContextMenu,
+  } = useHandleChatMessages();
 
-  const handleOpenContextMenu = (
-    e: MouseEvent<HTMLDivElement>,
-    messageId: number
-  ) => {
-    setContextMenuData({
-      x: e.clientX,
-      y: e.clientY,
-      messageId: messageId,
-    });
-    setIsContextMenuOpen(true);
-  };
+  const handleDeleteMessage = useCallback(() => {
+    deleteMessage(contextMenuData.messageId);
+  }, [deleteMessage]);
+  const handleEditMessage = useCallback(
+    (input: string) => {
+      editMessage(contextMenuData.messageId, input);
+    },
+    [editMessage]
+  );
+
   return (
     <div className="w-full h-full border-red-50 p-4 flex flex-col overflow-y-auto gap-y-2 ">
       {chat.messages &&
@@ -43,9 +43,7 @@ export function Chats({ chat, deleteMessage, editMessage }: ChatsPropsType) {
       {isContextMenuOpen && (
         <ContextMenu
           contextMenuData={contextMenuData}
-          closeContextMenu={() => {
-            setIsContextMenuOpen(false);
-          }}
+          closeContextMenu={closeContextMenu}
         >
           <div className="flex flex-col rounded-md text-white bg-freinachtBlack">
             <ButtonWithModal
@@ -54,9 +52,7 @@ export function Chats({ chat, deleteMessage, editMessage }: ChatsPropsType) {
               modalPropObject={{
                 text: 'Are you sure you want to delete the mesage?',
                 type: 'Confirm',
-                onSuccess: () => {
-                  deleteMessage(contextMenuData.messageId);
-                },
+                onSuccess: handleDeleteMessage,
                 onCancel: () => {},
               }}
             >
@@ -69,9 +65,7 @@ export function Chats({ chat, deleteMessage, editMessage }: ChatsPropsType) {
               modalPropObject={{
                 text: 'Edit the message!',
                 type: 'Prompt',
-                onSuccess: (input) => {
-                  editMessage(contextMenuData.messageId, input);
-                },
+                onSuccess: handleEditMessage,
                 onCancel: () => {},
               }}
             >

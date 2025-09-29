@@ -10,6 +10,10 @@ export type MessagePropsType = {
 export function Message({ message, openContextMenu }: MessagePropsType) {
   const createdDate = new Date(message.created);
   const appModeObject = useContext(AppModeContext);
+  const handleOnContextMenu = (e: MouseEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    openContextMenu(e, message.id);
+  };
 
   return (
     <div
@@ -18,10 +22,7 @@ export function Message({ message, openContextMenu }: MessagePropsType) {
         (message.recieved ? `bg-freinachtBlack` : `bg-poolGreen self-end `) +
         (message.value.length < 20 ? 'flex gap-2 items-baseline' : '')
       }
-      onContextMenu={(e) => {
-        e.preventDefault();
-        openContextMenu(e, message.id);
-      }}
+      onContextMenu={handleOnContextMenu}
     >
       {message.value}
       {appModeObject.mode == 'Normal' && (

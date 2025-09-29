@@ -1,4 +1,6 @@
-export function SearchChatsBar() {
+import { memo } from 'react';
+
+export const SearchChatsBar = memo(() => {
   return (
     <div className="h-auto w-full p-2 ">
       <input
@@ -7,4 +9,4 @@ export function SearchChatsBar() {
       />
     </div>
   );
-}
+});

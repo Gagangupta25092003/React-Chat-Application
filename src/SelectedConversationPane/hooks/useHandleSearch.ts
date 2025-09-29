@@ -1,15 +1,14 @@
 import { useCallback, useState } from 'react';
-import { SelectedConversationPaneProps } from '../types';
 
 export function useHandleSearch() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
-  function hideSearch() {
+  const hideSearch = useCallback(function () {
     setIsSearchOpen(false);
-  }
+  }, []);
 
-  function toggleSearch() {
+  const toggleSearch = useCallback(function () {
     setIsSearchOpen((prev) => !prev);
-  }
+  }, []);
   return { isSearchOpen, hideSearch, toggleSearch };
 }
